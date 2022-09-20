@@ -62,6 +62,5 @@ if ref_file and data_file:
 
     coords, b0maps = import_data_files(ref_file, data_file)
     st.success("Successfully imported files.")
-
-    st.write(len(b0maps))
+    st.write("B0 maps size:", b0maps[0].shape)
     st.write(plot3dimage(b0maps[0]))

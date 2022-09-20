@@ -9,7 +9,7 @@ Created on Fri Aug 05 22:20:04 2022
 @author: Paul
 """
 import toml
-import importlib
+import importlib, platform
 import streamlit as st
 from pathlib import Path
 
@@ -32,3 +32,15 @@ with open(pkg_dir / "bin/libs/calcshim.lic", "w") as f:
 
 st.title("Introduction")
 st.sidebar.markdown("Introduction")
+
+st.write("OS:", platform.system())
+st.write("Python: ver.", platform.python_version())
+st.write("MRShim:", pkg_dir)
+
+from fileio import loadmri
+from imageproc import imagesegm
+from shimutils import plot3dimage
+
+print(loadmri.__doc__)
+print(imagesegm.__doc__)
+print(plot3dimage.__doc__)
