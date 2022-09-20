@@ -39,7 +39,7 @@ def import_data_files(ref_file, data_file):
         b0maps = download_files(data_file, dirpath=tmpdirname, file_ext=file_ext)
         b0maps = [
             loadmri(f)[2] for f in b0maps
-            if (f.suffix.lower() == ".par" and (f.with_suffix(".rec") in [f.name.lower() for f in b0maps])) or \
+            if (f.suffix.lower() == ".par" and (f.with_suffix(".rec").name.lower() in [f.name.lower() for f in b0maps])) or \
                 (f.suffix.lower().endswith(".npz"))
         ]
         hdr, mask, refb0, _ = loadmri(download_files(ref_file, dirpath=tmpdirname, file_ext=file_ext)[0])
@@ -63,4 +63,5 @@ if ref_file and data_file:
     coords, b0maps = import_data_files(ref_file, data_file)
     st.success("Successfully imported files.")
 
+    st.write(len(b0maps))
     st.write(plot3dimage(b0maps[0]))

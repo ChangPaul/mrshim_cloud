@@ -9,11 +9,11 @@ Created on Fri Aug 05 22:20:04 2022
 @author: Paul
 """
 import toml
+import importlib
 import streamlit as st
-from importlib import find_loader
 from pathlib import Path
 
-if find_loader("mrshim") is None:
+if importlib.util.find_spec("mrshim") is None:
     from pip._internal import main as pipmain
     pipmain(["install", "bin/mrshim-1.2.8-cp38-cp38-linux_x86_64.whl"])
 
